@@ -122,8 +122,8 @@
                         </ul>
                     </li>
                 <?php }else{ ?>
-                    <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"> <a>Đăng kí</a> </li>
-                    <li class="header__navbar-item header__navbar-item--strong"> <a>Đăng nhập</a> </li>
+                    <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"> <a href="<?php echo $host[0] . '?controller=authen&action=register' ?>">Đăng kí</a> </li>
+                    <li class="header__navbar-item header__navbar-item--strong"> <a href="<?php echo $host[0] . '?controller=authen&action=login' ?>">Đăng nhập</a> </li>
                 <?php } ?>
             </ul>
         </nav>

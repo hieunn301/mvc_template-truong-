@@ -12,10 +12,11 @@ if ($action == 'login') {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error =[];
         $fullname = filter_input(INPUT_POST,'fullname',FILTER_SANITIZE_SPECIAL_CHARS);
-        $phone = filter_input(INPUT_POST,'phone_number',FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_SPECIAL_CHARS);
+        $phone = filter_input(INPUT_POST,'phone_number',FILTER_SANITIZE_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_SPECIAL_CHARS);
         $checkRegister = true;
+
         if (empty(trim($fullname))) {
             $error['fullname']['required'] = 'Họ và tên bắt buộc phải nhập';
             $checkRegister = false;
@@ -25,15 +26,7 @@ if ($action == 'login') {
                 $checkRegister = false;
             }
         }
-        if (empty(trim($phone))) {
-            $error['phone']['required'] = 'Số điẹn thoại bắt buộc phải nhập';
-            $checkRegister = false;
-        }else {
-            if (!preg_match('/^(0|84)\d{9}/',$phone)) {
-                $error['username']['is_Phone'] = 'So dien thoai khong hop le';
-                $checkRegister = false;
-            }
-        }
+
         if (empty(trim($email))) {
             $error['email']['required'] = 'bắt buộc phải nhập';
             $checkRegister = false;
@@ -43,6 +36,17 @@ if ($action == 'login') {
                 $checkRegister = false;
             }
         }
+
+        if (empty(trim($phone))) {
+            $error['phone']['required'] = 'Số điẹn thoại bắt buộc phải nhập';
+            $checkRegister = false;
+        }else {
+            if (!preg_match('/^(0|84)\d{9}/',$phone)) {
+                $error['username']['is_Phone'] = 'So dien thoai khong hop le';
+                $checkRegister = false;
+            }
+        }
+        
         if (empty(trim($password))) {
             $error['password']['required'] = 'bắt buộc phải nhập';
             $checkRegister = false;
@@ -53,6 +57,7 @@ if ($action == 'login') {
                 $checkRegister = false;
             }
         }
+        
         if ($checkRegister == false) {
             require_once 'View/auth/signup.php';
         }else {
@@ -70,6 +75,7 @@ if ($action == 'login') {
             header('Location: '.$host[0].'?controller=home&action=home');
             exit();
         }
+
         // var_dump($statusLogin);
         // die();
         
@@ -100,6 +106,8 @@ if ($action == 'login') {
         //         }
         //     }
         // }
+
+
     } else {
         $statusLogin = 4;
     }
@@ -108,4 +116,3 @@ require_once 'View/auth/login.php';
     unset($_SESSION['user']);
     header('Location:' .$host[0].'?controller=authen&action=login');
 }
-

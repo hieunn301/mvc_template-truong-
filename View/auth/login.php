@@ -18,5 +18,5 @@
         <input type="password" placeholder="Password" name="password">
         <button type="submit" name="submit">Login</button>
     </form>
-    <a class="btn-red sign-up" href="<?php echo $host[0].'?controller=authen&action=login'?>">Register</a>
+    <a class="btn-red sign-up" href="<?php echo $host[0].'?controller=authen&action=register'?>">Register</a>
 </nav>

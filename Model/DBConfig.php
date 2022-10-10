@@ -4,7 +4,7 @@ class Database
 {
     private $hostname = 'localhost';
     private $username = 'root';
-    private $pass = '';
+    private $pass = '123';
     private $dbname = 'webbanhang';
     private $conn = NUll;
     private $result = NULL;
