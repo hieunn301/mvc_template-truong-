@@ -1,3 +1,4 @@
+
 <?php
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -66,7 +67,7 @@ if ($action == 'login') {
     }
 }elseif($action == 'login-prossec') {
     if (isset($_POST['submit'])) {
-        $statusLogin = 1;
+        $statusLogin = 0;
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pwd = mysqli_real_escape_string($conn, $_POST['password']);
         $user = new User();
