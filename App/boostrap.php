@@ -1,0 +1,2 @@
+<?php
+$modelCategory = new Category();
